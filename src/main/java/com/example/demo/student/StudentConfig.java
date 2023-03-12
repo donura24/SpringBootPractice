@@ -12,20 +12,23 @@ import static java.time.Month.*;
 
 @Configuration
 public class StudentConfig {
-@Bean
-    CommandLineRunner commandLineRunner(StudentRepository repository){
+    @Bean
+    CommandLineRunner commandLineRunner(StudentRepository repository) {
         return args -> {
-                    Student teo = new Student(
-                            "Teo",
-                            "teo@agu.io",
-                            LocalDate.of(2000, DECEMBER, 3),
-                            33);
-                    Student andro = new Student(
-                            "Andro",
-                            "andro@gmail.com",
-                            LocalDate.of(2010,APRIL,9),
-                            13
-                    );
+            Student teo = new Student(
+                    "Teo",
+                    "teo@agu.io",
+                    LocalDate.of(2000, DECEMBER, 3),
+                    33);
+            Student andro = new Student(
+                    "Andro",
+                    "andro@gmail.com",
+                    LocalDate.of(2010, APRIL, 9),
+                    13
+            );
+            repository.saveAll(
+                    List.of(teo, andro)
+            );
         };
     }
 }
