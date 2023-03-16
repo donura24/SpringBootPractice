@@ -1,14 +1,10 @@
 package com.example.demo.student;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -23,8 +19,8 @@ public class StudentService {
     }
 
     @GetMapping()
-    public List<Student> getStudent() {
-        return studentRepository.findAll();
+    public Optional<Student> getStudent(Long id) {
+        return studentRepository.findById(id);
     }
 
     public void addNewStudent(Student student) {

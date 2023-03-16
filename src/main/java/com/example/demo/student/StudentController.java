@@ -3,7 +3,7 @@ package com.example.demo.student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "api/v1/student")
@@ -16,9 +16,9 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping
-    public List<Student> getStudents() {
-        return studentService.getStudent();
+    @GetMapping(path = "{studentId}")
+    public Optional<com.example.demo.student.Student> getStudents(@PathVariable ("studentId") Long id) {
+        return studentService.getStudent(id);
     }
 
     @PostMapping
